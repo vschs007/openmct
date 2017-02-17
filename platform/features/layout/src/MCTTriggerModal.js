@@ -6,7 +6,7 @@ define([
 '<div class="abs overlay l-large-view">' +
 '    <div class="abs blocker"></div>' +
 '    <div class="abs holder">' +
-'        <a class="close icon-x"></a>' +
+'        <a class="close icon-x-in-circle"></a>' +
 '        <div class="abs contents"></div>' +
 '    </div>' +
 '</div>';

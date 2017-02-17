@@ -21,6 +21,7 @@
  *****************************************************************************/
 
 .overlay {
+    $br: 11px;
     &.delayEntry100ms {
         @include keyframes(fadeInFromNone) {
             0% {
@@ -40,16 +41,21 @@
         z-index: 100;
     }
     .close {
-        font-size: 0.8rem;
+        $d: $interiorMargin;
+        //font-size: 0.8rem;
+        opacity: 0.3;
         position: absolute;
-        top: $interiorMarginLg;
-        right: $interiorMarginLg;
+        top: $d;
+        right: $d;
         bottom: auto;
         left: auto;
-        z-index: 100;
+        &:hover {
+            opacity: 0.6;
+        }
     }
 
     > .holder {
+        border-radius: $br;
         top: 50%;
         right: auto;
         bottom: auto;
@@ -57,7 +63,6 @@
         @include transform(translateX(-50%) translateY(-50%));
         min-height: 300px;
         min-width: 600px;
-        z-index: 101;
         > .contents {
             $m: $overlayMargin;
             top: $m;
@@ -66,9 +71,7 @@
             left: $m;
         }
     }
-}
 
-.overlay {
     &.l-dialog {
         .s-button {
             &:not(.major) {
@@ -78,8 +81,8 @@
 
         > .holder {
             @include containerSubtle($colorOvrBg, $colorOvrFg);
-            border-radius: $basicCr * 2;
-            //color: $colorOvrFg;
+            border-radius: $br;
+            z-index: 102;
             height: 70%;
             width: 50%;
         }
@@ -152,15 +155,25 @@
 
     &.l-large-view {
         > .holder {
+            $dur: 500ms;
+            @include keyframes(overlayIn) {
+                from { opacity: 0; width: 1%; height: 1%; }
+                to { opacity: 1; width: 90%; height: 90%; }
+            }
+            @include keyframes(contentsIn) {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @include animToParams(overlayIn, $dur: $dur, $delay: 0);
             background: $colorBodyBg;
-            border-radius: $basicCr * 2;
-            //color: $colorBodyFg; // Main body styles should cover this
-            height: 90%;
-            width: 90%;
-
+            .abs.contents {
+                opacity: 0;
+                @include animToParams(contentsIn, $dur: 250ms, $delay: $dur);
+            }
             .t-btn-view-large {
                 display: none;
             }
+            z-index: 101;
         }
     }
 }
