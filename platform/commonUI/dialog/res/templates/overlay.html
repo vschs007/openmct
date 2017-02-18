@@ -21,10 +21,10 @@
 -->
 <div class="abs overlay l-dialog" ng-class="{'delayEntry100ms' : ngModel.delay}">
     <div class="abs blocker"></div>
-    <div class="abs holder">
+    <div class="abs outer-holder">
         <a ng-click="ngModel.cancel()"
            ng-if="ngModel.cancel"
            class="close icon-x-in-circle"></a>
-        <div class="abs contents" ng-transclude></div>
+        <div class="abs inner-holder contents" ng-transclude></div>
     </div>
 </div>
