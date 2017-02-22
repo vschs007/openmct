@@ -180,7 +180,6 @@
     // Large view overlays for mobile and desktop
     &.l-large-view {
         > .abs.outer-holder {
-            $durOverlayIn: 500ms;
             @include keyframes(overlayIn) {
                 from {
                     opacity: 0;
@@ -192,7 +191,7 @@
                 }
             }
 
-            @include animToParams(overlayIn, $dur: $durOverlayIn, $delay: 0);
+            @include animToParams(overlayIn, $dur: $durLargeViewExpand, $delay: 0);
             background: $colorBodyBg;
 
             .abs.inner-holder {
@@ -201,7 +200,7 @@
                     from { opacity: 0; }
                     to { opacity: 1; }
                 }
-                @include animToParams(contentsIn, $dur: 250ms, $delay: $durOverlayIn * 1.5);
+                @include animToParams(contentsIn, $dur: 50ms, $delay: $durLargeViewExpand * 1.25);
             }
 
             .t-btn-view-large {

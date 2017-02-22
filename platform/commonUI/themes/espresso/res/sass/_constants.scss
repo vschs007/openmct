@@ -146,6 +146,7 @@ $colorOvrFg: pullForward($colorBodyFg, 30%);
 $colorOvrBtnBg: pullForward($colorOvrBg, 20%);
 $colorOvrBtnFg: #fff;
 $colorFieldHintOverlay: pullForward($colorOvrBg, 30%);
+$durLargeViewExpand: 250ms;
 
 // Items
 $colorItemBg: lighten($colorBodyBg, 5%);
