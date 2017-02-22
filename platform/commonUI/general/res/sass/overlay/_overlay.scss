@@ -69,10 +69,10 @@
             font-size: 95%;
             height: $ovrFooterH;
             line-height: $ovrFooterH;
-            margin-left: $interiorMargin;
+            margin-bottom: $interiorMarginSm;
             padding: 0 $interiorMargin * 3;
-            &:first-child {
-                margin-left: 0;
+            &:not(:last-child) {
+                margin-right: $interiorMargin;
             }
         }
     }
@@ -87,7 +87,7 @@
 
         > .abs.outer-holder {
             @include desktopandtablet {
-                $max: 1024px;
+                $max: 1280px;
                 @include transform(translateX(-50%) translateY(-50%));
                 border-radius: $overlayCr;
                 top: 50%; right: auto; bottom: auto; left: 50%;
