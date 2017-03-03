@@ -1,6 +1,8 @@
 define([
-
-], function () {
+    'zepto'
+], function (
+    $
+) {
 
     var OVERLAY_TEMPLATE = '' +
 '<div class="abs overlay l-large-view">' +
@@ -28,6 +30,7 @@ define([
      * descendent of a `.frame` element.
      */
     function MCTTriggerModal() {
+        var toggleOverlay;
 
         function link($scope, $element) {
             var frame = $element.parent();
@@ -84,7 +87,7 @@ define([
                 overlay = undefined;
             }
 
-            function toggleOverlay() {
+            toggleOverlay = function () {
                 if (!isOpen) {
                     openOverlay();
                     isOpen = true;
@@ -92,7 +95,7 @@ define([
                     closeOverlay();
                     isOpen = false;
                 }
-            }
+            };
 
             $element.on('click', toggleOverlay);
             $scope.$on('$destroy', function () {
