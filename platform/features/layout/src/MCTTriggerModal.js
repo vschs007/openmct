@@ -30,7 +30,6 @@ define([
      * descendent of a `.frame` element.
      */
     function MCTTriggerModal() {
-        var toggleOverlay;
 
         function link($scope, $element) {
             var frame = $element.parent();
@@ -49,6 +48,7 @@ define([
             frame = frame[0];
             var layoutContainer = frame.parentElement,
                 isOpen = false,
+                toggleOverlay,
                 overlay,
                 closeButton,
                 doneButton,
