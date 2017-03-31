@@ -23,11 +23,13 @@
 define([
     'lodash',
     '../../platform/features/conductor/utcTimeSystem/src/UTCTimeSystem',
-    '../../example/generator/plugin'
+    '../../example/generator/plugin',
+    './plot/plugin'
 ], function (
     _,
     UTCTimeSystem,
-    GeneratorPlugin
+    GeneratorPlugin,
+    PlotPlugin
 ) {
     var bundleMap = {
         CouchDB: 'platform/persistence/couch',
@@ -155,6 +157,8 @@ define([
     plugins.Generator = function () {
         return GeneratorPlugin;
     };
+
+    plugins.Plot = PlotPlugin;
 
     return plugins;
 });
