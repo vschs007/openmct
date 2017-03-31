@@ -23,11 +23,13 @@
 define([
     'lodash',
     '../../platform/features/conductor/utcTimeSystem/src/UTCTimeSystem',
-    '../../example/generator/plugin'
+    '../../example/generator/plugin',
+    '../../platform/features/autoflow/plugin'
 ], function (
     _,
     UTCTimeSystem,
-    GeneratorPlugin
+    GeneratorPlugin,
+    AutoflowPlugin
 ) {
     var bundleMap = {
         CouchDB: 'platform/persistence/couch',
@@ -54,6 +56,20 @@ define([
             });
         };
     };
+
+    /**
+     * @typedef {Object} AutoflowOptions
+     * @property {string} [type] The key of an object type to apply this view
+     * to exclusively.
+     */
+    /**
+     * A tabular view showing the latest values of multiple telemetry points at
+     * once. Formatted so that labels and values are aligned.
+     *
+     * @param {AutoflowOptions} [options] Optional settings to apply to the autoflow
+     * tabular view. Currently supports one option, 'type'.
+     */
+    plugins.AutoflowView = AutoflowPlugin;
 
     var conductorInstalled = false;
 
