@@ -212,6 +212,10 @@ define([
      *          telemetry data
      */
     TelemetryAPI.prototype.request = function (domainObject, options) {
+        if (arguments.length === 1) {
+            arguments.length = 2;
+            arguments[1] = {};
+        }
         var provider = this.findRequestProvider.apply(this, arguments);
         return provider.request.apply(provider, arguments);
     };
@@ -233,6 +237,10 @@ define([
      *          the subscription
      */
     TelemetryAPI.prototype.subscribe = function (domainObject, callback, options) {
+        if (arguments.length === 2) {
+            arguments.length = 3;
+            arguments[2] = {};
+        }
         var provider = this.findSubscriptionProvider.apply(this, arguments);
         return provider.subscribe.apply(provider, arguments);
     };
