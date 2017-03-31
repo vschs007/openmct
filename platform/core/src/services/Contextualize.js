@@ -39,24 +39,7 @@ define(
          * @returns {Function}
          * @memberof platform/core
          */
-        function Contextualize($log) {
-            function validate(id, parentObject) {
-                var model = parentObject && parentObject.getModel(),
-                    composition = (model || {}).composition || [];
-                if (composition.indexOf(id) === -1) {
-                    $log.warn([
-                        "Attempted to contextualize",
-                        id,
-                        "in",
-                        parentObject && parentObject.getId(),
-                        "but that object does not contain",
-                        id,
-                        "in its composition.",
-                        "Unexpected behavior may follow."
-                    ].join(" "));
-                }
-            }
-
+        function Contextualize() {
             /**
              * Contextualize this domain object.
              * @param {DomainObject} domainObject the domain object
@@ -65,13 +48,6 @@ define(
              *        which should appear as the contextual parent
              */
             return function (domainObject, parentObject) {
-                // Don't validate while editing; consistency is not
-                // necessarily expected due to unsaved changes.
-                var editor = domainObject.getCapability('editor');
-                if (!editor || !editor.inEditContext()) {
-                    validate(domainObject.getId(), parentObject);
-                }
-
                 return new ContextualDomainObject(domainObject, parentObject);
             };
         }

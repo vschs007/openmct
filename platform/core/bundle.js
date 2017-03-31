@@ -384,7 +384,6 @@ define([
                     "key": "contextualize",
                     "implementation": Contextualize,
                     "depends": [
-                        "$log"
                     ]
                 },
                 {
