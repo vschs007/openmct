@@ -28,7 +28,6 @@
     });
     options.include = options.include.concat(options.i);
     options.exclude = options.exclude.concat(options.x);
-
     // Show command line options
     if (options.help || options.h) {
         console.log("\nUsage: node app.js [options]\n");
@@ -41,9 +40,7 @@
         console.log("");
         process.exit(0);
     }
-
     app.disable('x-powered-by');
-
     // Override bundles.json for HTTP requests
     app.use('/' + BUNDLE_FILE, function (req, res) {
         var bundles;
@@ -53,7 +50,6 @@
         } catch (e) {
             bundles = [];
         }
-
         // Handle command line inclusions/exclusions
         bundles = bundles.concat(options.include);
         bundles = bundles.filter(function (bundle) {
@@ -76,7 +72,6 @@
 
     // Expose everything else as static files
     app.use(express['static'](options.directory));
-
     // Finally, open the HTTP server and log the instance to the console
     app.listen(options.port, function() {
         console.log('Open MCT application running at localhost:' + options.port)
